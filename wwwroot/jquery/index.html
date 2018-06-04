@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,5 +46,73 @@
     });
 </script>
 
+=======
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jsTree test</title>
+    <!-- 2 load the theme CSS file -->
+    <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<!-- 3 setup a container element -->
+<div id="jstree">
+    <!-- in this example the tree is populated from inline HTML -->
+
+</div>
+
+<!-- 4 include the jQuery library -->
+<script src="./jquery.js"></script>
+<!-- 5 include the minified jstree source -->
+<script src="./jstree.js"></script>
+<script>
+    /*
+    [
+      { "id" : "ajson1", "parent" : "#", "text" : "Simple root node" },
+      { "id" : "ajson2", "parent" : "#", "text" : "Root node 2" },
+      { "id" : "ajson3", "parent" : "ajson2", "text" : "Child 1" },
+      { "id" : "ajson4", "parent" : "ajson2", "text" : "Child 2" },
+     ]
+    * */
+    data = [
+        {id:1,parent:"#",text:"品牌服饰"},
+        {id:2,parent:"1",text:"女装"},
+        {id:5,parent:"1",text:"男装"},
+        {id:3,parent:"2",text:"上衣"},
+        {id:4,parent:"#",text:"钟表"}
+    ];
+    $(function () {
+        // 6 create an instance when the DOM is ready
+        $('#jstree').on('changed.jstree', function (e, data) {
+                var i, j, r = [];
+                for(i = 0, j = data.selected.length; i < j; i++) {
+                    //r.push(data.instance.get_node(data.selected[i]));
+                    r.push(data.selected[i]);
+                }
+                console.log('Selected: ' + r.join(', '));
+            }).jstree({
+            "core" : {
+                "themes" : {
+                    "variant" : "large"
+                },
+                'data' :data
+            },
+            "checkbox" : {
+                "keep_selected_style" : false
+            },
+            "plugins" : ["checkbox","contextmenu", "dnd", "search",
+                "state", "types", "wholerow"],
+            "types" : {
+                "default" : {
+                    "icon" : "glyphicon glyphicon-flash"
+                },
+                "demo" : {
+                    "icon" : "glyphicon glyphicon-ok"
+                }
+            },
+        });
+    });
+</script>
+>>>>>>> 10a642409d40ce666fcfaf70c1d3d5dece57f225
 </body>
 </html>
