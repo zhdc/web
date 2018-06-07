@@ -1,6 +1,13 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2018/6/7 0007
+ * Time: 10:20
+ */
 
-$dbms='mysql';     //数据库类型
+/*
+ $dbms='mysql';     //数据库类型
 $host='127.0.0.1'; //数据库主机名
 $dbName='opensns';    //使用的数据库
 $user='root';      //数据库连接用户名
@@ -24,3 +31,7 @@ $stmt->execute();
 $res = $stmt->fetchAll(PDO::FETCH_ASSOC);//输出关联数组形式的结果集
 print_r($res);
 die();
+ * */
+class Db{
+    
+}

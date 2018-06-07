@@ -9,6 +9,6 @@
 $core_path = dirname(dirname(dirname(__FILE__)));
 require_once $core_path."/core/start_core.php";
 
-$p = new Common();
-$v = $p->noWhitespace("99 ");
+$p = new Param();
+$v = $p->checkPhone("1597940599");
 var_dump($v);
