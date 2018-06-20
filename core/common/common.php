@@ -54,4 +54,35 @@ class Common{
 
         return !preg_match('#\s#', $input);
     }
+
+    /*
+     * xml to array
+     * */
+    function xmlstring2array($string)
+    {
+        $xml = simplexml_load_string($string, 'SimpleXMLElement', LIBXML_NOCDATA);
+        $array = json_decode(json_encode($xml), TRUE);
+        return $array;
+    }
+
+    /*
+     * array to xml
+     */
+    function arr2xml($data, $root = true)
+    {
+        $str="";
+        if($root)$str .= "<xml>";
+        foreach($data as $key => $val)
+        {
+            if(is_array($val))
+            {
+                $child = arr2xml($val, false);
+                $str .= "<$key>$child</$key>";
+            }else {
+                $str.= "<$key><![CDATA[$val]]></$key>";
+            }
+        }
+        if($root)$str .= "</xml>";
+        return $str;
+    }
 }

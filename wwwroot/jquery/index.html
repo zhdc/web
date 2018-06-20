@@ -1,52 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<script src="/../static/js/jquery-3.3.1.js"></script>
-<body>
-
-<script>
-    $(document).ready(function () {
-        $.ajax({
-            url:'http://www.cash.com:8080/api/test/?',
-            type:'POST',
-            data:{
-                key:'ccllll'
-            },
-            dataType:'json',
-            success:function (a) {
-                alert(a['cc']);
-            },
-            error:function (a) {
-
-            }
-        });
-        // $.post("http://www.cash.com:8080/GetCashCard/Pay/?",{key:'cc'})
-        //     .done(function(data){
-        //         alert(data);
-        //     });
-        // $.ajax({
-        //     url: "http://www.cash.com:8080/GetCashCard/Pay/?",
-        //     type: "get",
-        //     crossDomain: true,
-        //     data: {
-        //         key:'cc'
-        //     },
-        //     dataType: "json",
-        //     success:function(result){
-        //         alert(JSON.stringify(result));
-        //     },
-        //     error:function(xhr,status,error){
-        //         alert(status);
-        //     }
-        // });
-    });
-</script>
-
-=======
 <html>
 <head>
     <meta charset="utf-8">
@@ -90,12 +42,13 @@
                     r.push(data.selected[i]);
                 }
                 console.log('Selected: ' + r.join(', '));
-            }).jstree({
+            })
+            .jstree({
             "core" : {
                 "themes" : {
                     "variant" : "large"
                 },
-                'data' :data
+                'data':data
             },
             "checkbox" : {
                 "keep_selected_style" : false
@@ -113,6 +66,5 @@
         });
     });
 </script>
->>>>>>> 10a642409d40ce666fcfaf70c1d3d5dece57f225
 </body>
 </html>
