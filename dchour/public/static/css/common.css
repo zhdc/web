@@ -17,3 +17,13 @@ home
     margin-top: 10px;
     text-align: center;
 }
+
+.home_list a{
+    display: block;
+    width: 200px;
+    height: 200px;
+}
+.home_list a img{
+    width: 100%;
+    height: 100%;
+}
