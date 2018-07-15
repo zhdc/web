@@ -2,20 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="keywords" content="php中文文档,文档,php,入门,进阶">
-    <meta name="description" content="php官方文档中文版,php官方文档同步翻译">
+    <meta name="keywords" content="面试,面试题,java面试,面试储备">
+    <meta name="description" content="积累面试题库">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>猿艺之PHP</title>
+    <title>面试,java面试,储备</title>
 </head>
 <link href="/static/css/layui.css" rel="stylesheet" />
 <link href="/static/css/common.css" rel="stylesheet"/>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">猿艺之PHP</div>
+        <div class="layui-logo">知识储备</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="/index/Index/index.html">首页</a></li>
+            <li class="layui-nav-item"><a href="/">首页</a></li>
+            <li class="layui-nav-item"><a href="">PHP</a></li>
+            <li class="layui-nav-item"><a href="">IOS</a></li>
+            <li class="layui-nav-item"><a href="">Objective-c</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
 
@@ -25,14 +28,23 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <{include file="public/menu"/}>
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">面试</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/hive/Index/index.html">网络问题</a></dd>
+                    </dl>
+                </li>
+            </ul>
         </div>
     </div>
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
-            介绍
+            <div>
+                <div><h5>如何防止网络抖动产生的重复建单</h5></div>
+            </div>
         </div>
     </div>
 

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="php中文文档,文档,php,入门,进阶">
+    <meta name="description" content="php官方文档中文版,php官方文档同步翻译">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>设计模式-单例</title>
+</head>
+<link href="/static/css/layui.css" rel="stylesheet" />
+<link href="/static/css/common.css" rel="stylesheet"/>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">php 中文</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="/index/Index/index.html">首页</a></li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <{include file="public/menu"/}>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <pre>
+                <code>
+                    1:创建单例
+                    /**
+                     * 单例的三个特点
+                     * 1:一个类只有一个实例
+                     * 2:它必须自行创建这个实例
+                     * 3:必须自行向整个系统提供这个实例
+                     */
+                    namespace app\test\controller;
+                    class Singleton
+                    {
+                        private static $_instance = NULL;
+
+                        private function __construct()
+                        {
+                        }
+
+                        public static function getInstance()
+                        {
+                            if(is_null(self::$_instance)){
+                                self::$_instance = new Singleton();
+                            }
+                            return self::$_instance;
+                        }
+
+                        public function __clone()
+                        {
+                            // TODO: Implement __clone() method.
+                        }
+
+                        public function test()
+                        {
+                            return "singleton test";
+                        }
+                    }
+
+                    2:单例使用
+                    /**
+                     * Created by PhpStorm.
+                     * User: zhudechao
+                     * Date: 2018/7/5
+                     * Time: 下午10:30
+                     */
+                    namespace app\test\controller;
+                    use think\Controller;
+                    use think\facade\Hook;
+
+                    class Index extends Controller
+                    {
+
+                        public function index()
+                        {
+                            $instance = Singleton::getInstance();
+                            $ret = $instance->test();
+                            return json($ret);
+                        }
+                    }
+                </code>
+            </pre>
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © www.dchour.cn
+    </div>
+</div>
+
+<script src="/static/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+</body>
+</html>
