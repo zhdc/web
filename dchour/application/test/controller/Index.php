@@ -14,8 +14,16 @@ class Index extends Controller
 
     public function index()
     {
-        $instance = Singleton::getInstance();
-        $ret = $instance->test();
-        return json($ret);
+        $url = "http://php.net/manual/en/langref.php";
+        $html = file_get_contents($url);
+        $string = strstr($html,'<aside');
+        //echo htmlentities($string);exit;
+        $lititle = '<li class="">';
+        $arrstr = explode($lititle,$string);
+        $string = $arrstr[0].$lititle.$arrstr[1]."</ul>".$lititle.$arrstr[2]."</ul></aside>";
+        echo $string; //输出结果
+        echo "<br/>";
+        echo "<br/>";
+
     }
 }
