@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="array,to,xml">
+    <meta name="description" content="php数组转xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>array to xml</title>
+</head>
+<link href="/static/css/layui.css" rel="stylesheet" />
+<link href="/static/css/common.css" rel="stylesheet"/>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">php 中文</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="/">首页</a></li>
+            <li class="layui-nav-item"><a href="">PHP</a></li>
+            <li class="layui-nav-item"><a href="">IOS</a></li>
+            <li class="layui-nav-item"><a href="">Objective-c</a></li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <{include file="public/menu"/}>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+
+    <pre>
+        <code>
+        //xml to array
+        function xmlstring2array($string)
+        {
+            $xml = simplexml_load_string($string, 'SimpleXMLElement', LIBXML_NOCDATA);
+            $array = json_decode(json_encode($xml), TRUE);
+            return $array;
+        }
+
+        function arr2xml($data, $root = true){
+            $str="";
+            if($root)$str .= "<xml>";
+            foreach($data as $key => $val){
+                if(is_array($val)){
+                    $child = arr2xml($val, false);
+                    $str .= "<$key>$child</$key>";
+                }else{
+                    $str.= "<$key><![CDATA[$val]]></$key>";
+                }
+            }
+            if($root)$str .= "</xml>";
+            return $str;
+        }
+        </code>
+    </pre>
+
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © www.dchour.cn
+    </div>
+</div>
+
+<script src="/static/layui.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
+</script>
+</body>
+</html>

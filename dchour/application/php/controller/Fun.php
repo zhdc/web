@@ -14,4 +14,10 @@ class Fun extends Controller
     {
         return $this->fetch();
     }
+
+    //时间函数处理页面
+    public function dateTimeDisplay()
+    {
+        return $this->fetch("datatime");
+    }
 }
