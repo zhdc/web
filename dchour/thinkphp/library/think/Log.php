@@ -117,7 +117,7 @@ class Log implements LoggerInterface
             return;
         }
 
-        if (is_string($msg)) {
+        if (is_string($msg) && !empty($context)) {
             $replace = [];
             foreach ($context as $key => $val) {
                 $replace['{' . $key . '}'] = $val;
@@ -377,5 +377,13 @@ class Log implements LoggerInterface
     public function sql($message, array $context = [])
     {
         $this->log(__FUNCTION__, $message, $context);
+    }
+
+    public function __debugInfo()
+    {
+        $data = get_object_vars($this);
+        unset($data['app']);
+
+        return $data;
     }
 }

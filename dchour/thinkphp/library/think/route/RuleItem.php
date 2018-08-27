@@ -128,6 +128,7 @@ class RuleItem extends Rule
             $value = [$this->rule, $vars, $this->parent->getDomain(), $suffix, $this->method];
 
             Container::get('rule_name')->set($name, $value, $first);
+            Container::get('rule_name')->setRule($this->rule, $this);
         }
     }
 
@@ -155,11 +156,6 @@ class RuleItem extends Rule
         // 合并分组参数
         $option = $this->mergeGroupOptions();
 
-        // 检查前置行为
-        if (isset($option['before']) && false === $this->checkBefore($option['before'])) {
-            return false;
-        }
-
         $url = $this->urlSuffixCheck($request, $url, $option);
 
         if (is_null($match)) {
@@ -167,6 +163,11 @@ class RuleItem extends Rule
         }
 
         if (false !== $match) {
+            // 检查前置行为
+            if (isset($option['before']) && false === $this->checkBefore($option['before'])) {
+                return false;
+            }
+
             return $this->parseRule($request, $this->rule, $this->route, $url, $option, $match);
         }
 
@@ -242,7 +243,7 @@ class RuleItem extends Rule
         }
 
         if (false === strpos($rule, '<')) {
-            if (0 === strcasecmp($rule, $url) || (!$completeMatch && 0 === strncasecmp($rule, $url, strlen($rule)))) {
+            if (0 === strcasecmp($rule, $url) || (!$completeMatch && 0 === strncasecmp($rule . $depr, $url . $depr, strlen($rule . $depr)))) {
                 return $var;
             }
             return false;

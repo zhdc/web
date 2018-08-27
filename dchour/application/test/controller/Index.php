@@ -6,17 +6,23 @@
  * Time: 下午10:30
  */
 namespace app\test\controller;
+use Faker\Factory;
+use Faker\Provider\Base;
+use Faker\Provider\Internet;
 use think\Controller;
 use think\facade\Hook;
+use zhdc\param\Param;
+
+//require dirname(dirname(dirname(dirname(__FILE__)))).'/vendor/fzaninotto/faker/src/autoload.php';
 
 class Index extends Controller
 {
 
     public function index()
     {
-        $path = (dirname(dirname(dirname(dirname(__FILE__)))));
-        $b = $this->WSTDelDir($path."/public/test");
-        return json($b);
+        $b = Param::check_alpha('ccAAA88');
+        var_dump($b);
+        die();
     }
 
     public function WSTDelDir($dirpath)
