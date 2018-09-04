@@ -11,6 +11,7 @@ use Faker\Provider\Base;
 use Faker\Provider\Internet;
 use think\Controller;
 use think\facade\Hook;
+use zhdc\image\ImgBase64;
 use zhdc\param\Param;
 
 //require dirname(dirname(dirname(dirname(__FILE__)))).'/vendor/fzaninotto/faker/src/autoload.php';
@@ -20,8 +21,9 @@ class Index extends Controller
 
     public function index()
     {
-        $b = Param::check_alpha('ccAAA88');
-        var_dump($b);
+        $str = ImgBase64::base64EncodeImage('/Users/zhudechao/wwwroot/code/dchour/public/static/images/t00.jpg');
+        $ret = ImgBase64::base64_image_content($str,'/Users/zhudechao/wwwroot/code/dchour/public/test');
+        var_dump($ret);
         die();
     }
 
