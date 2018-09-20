@@ -16,4 +16,10 @@ class Index extends Controller
     {
         return 'hello,' . $name;
     }
+
+    //js将图片转化为base64
+    public function test1()
+    {
+        return $this->fetch();
+    }
 }
